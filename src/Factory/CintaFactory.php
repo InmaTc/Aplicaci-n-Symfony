@@ -39,7 +39,7 @@ final class CintaFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'numero' => self::faker()->numberBetween(1,9),
+            'numero' => self::faker()->unique()->numberBetween(1,9),
             'grupoCintas' => self::faker()->numberBetween(1,3),
             'disponible' => self::faker()->boolean() ? 1 : 0,
         ];
