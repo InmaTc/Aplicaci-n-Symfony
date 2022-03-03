@@ -16,42 +16,42 @@ class AppFixtures extends Fixture
         $cinta1 = CintaFactory::new()->create([
                                     'numero' => 1,
                                     'grupoCintas' => 1,
-                                    'disponible' => true,
+                                    'disponible' => true
         ]);
 
         $cinta2 = CintaFactory::new()->create([
                                     'numero' => 2,
                                     'grupoCintas' => 1,
-                                    'disponible' => false,
+                                    'disponible' => false
         ]);
 
         $cinta3 = CintaFactory::new()->create([
                                     'numero' => 3,
                                     'grupoCintas' => 1,
-                                    'disponible' => true,
+                                    'disponible' => true
         ]);
 
         $cinta4 = CintaFactory::new()->create([
                                     'numero' => 4,
                                     'grupoCintas' => 2,
-                                    'disponible' => true,
+                                    'disponible' => true
         ]);
         $cinta5 = CintaFactory::new()->create([
                                     'numero' => 5,
                                     'grupoCintas' => 2,
-                                    'disponible' => true,
+                                    'disponible' => true
         ]);
 
         $cinta6 = CintaFactory::new()->create([
                                     'numero' => 6,
                                     'grupoCintas' => 2,
-                                    'disponible' => true,
+                                    'disponible' => true
         ]);
 
         $cinta7 = CintaFactory::new()->create([
                                     'numero' => 7,
                                     'grupoCintas' => 3,
-                                    'disponible' => true,
+                                    'disponible' => true
         ]);
 
         $cinta8 = CintaFactory::new()->create([
@@ -66,8 +66,14 @@ class AppFixtures extends Fixture
                                     'disponible' => true,
         ]);
 
+        SocioFactory::createMany(150, function (){
+            return [
+                'cintas' => CintaFactory::randomRange(1,3),
+            ];
+        });
+
         EmpleadoFactory::createMany(30);
-        SocioFactory::createMany(150);
+
         AccesoFactory::createMany(50);
 
         $manager->flush();
