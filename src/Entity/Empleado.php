@@ -40,12 +40,6 @@ class Empleado
     private $dni;
 
     /**
-     * @ORM\Column(type="integer")
-     * @var ?int
-     */
-    private $telefono;
-
-    /**
      * @ORM\Column(type="string")
      * @var ?string
      */
@@ -132,24 +126,6 @@ class Empleado
     public function setDni(?string $dni): Empleado
     {
         $this->dni = $dni;
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getTelefono(): ?int
-    {
-        return $this->telefono;
-    }
-
-    /**
-     * @param int|null $telefono
-     * @return Empleado
-     */
-    public function setTelefono(?int $telefono): Empleado
-    {
-        $this->telefono = $telefono;
         return $this;
     }
 
