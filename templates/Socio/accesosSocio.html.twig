@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Listado de socios
+{% endblock %}
+
+{% block body %}
+    <h1>Listado de socios</h1>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Fecha Entrada</th>
+            <th>Fecha Salida</th>
+            <th>Peso</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for acceso in accesos %}
+            <tr>
+                <td>{{ acceso.horaEntrada | date('d/m/Y  h:i:s') }}</td>
+                <td>{{ acceso.horaSalida | date('d/m/Y   h:i:s') }}</td>
+                <td>{{ acceso.peso }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No hay ningún acceso de este socio aún</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('socio_listar') }}">Volver</a>
+{% endblock %}
