@@ -38,7 +38,7 @@ final class AccesoFactory extends ModelFactory
     protected function getDefaults(): array
     {
         $horaSalida = self::faker()->dateTimeBetween('-1 year', '-1 months');
-        $horaEntrada =  self::faker()->dateTimeBetween('-13 months', $horaSalida);
+        $horaEntrada =  self::faker()->dateTimeBetween($horaSalida->modify('-1 hours'), $horaSalida->modify('-30 minute'));
 
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
