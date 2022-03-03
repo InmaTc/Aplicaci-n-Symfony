@@ -68,6 +68,11 @@ class Empleado
         $this->accesosEmpleado = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->nombre . ' ' . $this->apellidos;
+    }
+
     /**
      * @return int|null
      */
