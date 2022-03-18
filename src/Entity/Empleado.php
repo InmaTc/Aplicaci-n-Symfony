@@ -168,7 +168,7 @@ class Empleado
     /**
      * @return Acceso[]|Collection
      */
-    public function getAccesosEmpleado()
+    public function getAccesosEmpleado() : ?Acceso
     {
         return $this->accesosEmpleado;
     }

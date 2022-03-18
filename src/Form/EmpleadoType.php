@@ -29,11 +29,11 @@ class EmpleadoType extends AbstractType
             ])
             ->add('esSupervisor')
 
-            ->add('accesosEmpleado', EntityType::class, [
+           /* ->add('accesosEmpleado', EntityType::class, [
                 'label' => 'Accesos del empleado',
                 'class' => Acceso::class,
                 'multiple' => true
-            ])
+            ])*/
         ;
     }
 

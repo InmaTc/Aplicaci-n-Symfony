@@ -12,4 +12,24 @@ class EmpleadoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Empleado::class);
     }
+
+    public function create() : Empleado
+    {
+        $empleado = new Empleado();
+        $this->getEntityManager()->persist($empleado);
+
+        return $empleado;
+    }
+
+    public function save() : void
+    {
+        $this->getEntityManager()->flush();
+    }
+
+    public function delete(Empleado $empleado) : void
+    {
+        $this->getEntityManager()->remove($empleado);
+        $this->save();
+    }
+
 }
