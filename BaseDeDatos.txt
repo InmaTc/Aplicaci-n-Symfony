@@ -1,0 +1,16 @@
+
+ The following SQL statements will be executed:
+
+     CREATE TABLE acceso (id INT AUTO_INCREMENT NOT NULL, cinta_accede_id INT DEFAULT NULL, supervisada_por_id INT DEFAULT NULL, socio_accede_id INT DEFAULT NULL,
+hora_entrada DATE NOT NULL COMMENT '(DC2Type:date_immutable)', hora_salida DATE DEFAULT NULL COMMENT '(DC2Type:date_immutable)', peso INT DEFAULT NULL, INDEX IDX_1
+268771BA25694FC (cinta_accede_id), INDEX IDX_1268771B71B45C6 (supervisada_por_id), INDEX IDX_1268771B991BE76F (socio_accede_id), PRIMARY KEY(id)) DEFAULT CHARACTER
+ SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
+     CREATE TABLE cinta (id INT AUTO_INCREMENT NOT NULL, numero INT NOT NULL, grupo_cintas INT NOT NULL, disponible TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT C
+HARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
+     CREATE TABLE empleado (id INT AUTO_INCREMENT NOT NULL, nombre VARCHAR(255) NOT NULL, apellidos VARCHAR(255) NOT NULL, dni VARCHAR(255) NOT NULL, email VARCHAR
+(255) NOT NULL, es_supervisor TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
+     CREATE TABLE socio (id INT AUTO_INCREMENT NOT NULL, nombre VARCHAR(255) NOT NULL, apellidos VARCHAR(255) NOT NULL, dni VARCHAR(255) NOT NULL, PRIMARY KEY(id))
+ DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
+     ALTER TABLE acceso ADD CONSTRAINT FK_1268771BA25694FC FOREIGN KEY (cinta_accede_id) REFERENCES cinta (id);
+     ALTER TABLE acceso ADD CONSTRAINT FK_1268771B71B45C6 FOREIGN KEY (supervisada_por_id) REFERENCES empleado (id);
+     ALTER TABLE acceso ADD CONSTRAINT FK_1268771B991BE76F FOREIGN KEY (socio_accede_id) REFERENCES socio (id);
