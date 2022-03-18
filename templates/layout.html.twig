@@ -16,7 +16,7 @@
                     <a class="nav-link" href="#"><i class="fa fa-hockey-puck"></i> Cintas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-users"></i> Empleados</a>
+                    <a class="nav-link {% if route_name starts with 'departamento' %}active{% endif %}" href="{{ path('empleado_listar') }}" href="#"><i class="fa fa-users"></i> Empleados</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if route_name starts with 'departamento' %}active{% endif %}" href="{{ path('socio_listar') }}"><i class="fa fa-door-open"></i> Socios</a>
