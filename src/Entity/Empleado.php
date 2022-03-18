@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmpleadoRepository")
- * @ORM\Table(name="empleado")
+ * @Assert\EnableAutoMapping()
  */
 
 class Empleado
