@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmpleadoRepository")
@@ -23,30 +24,39 @@ class Empleado
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Debe introducir el nombre del empleado")
+     * @Assert\Length(min=3, minMessage="Mínimo tres letras")
      * @var ?string
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Debe introducir los apellidos")
+     * @Assert\Length(min=3, minMessage="Mínimo tres letras")
      * @var ?string
      */
     private $apellidos;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Debe introducir el DNI")
+     * @Assert\Expression(((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z])), message="Formato no válido")
      * @var ?string
      */
     private $dni;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Debe introducir el email")
+     * @Assert\Email()
      * @var ?string
      */
     private $email;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank(message="Debe introducir si es o no supervisor")
      * @var ?bool
      */
     private $esSupervisor;
