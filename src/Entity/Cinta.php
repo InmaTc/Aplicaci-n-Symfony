@@ -45,16 +45,9 @@ class Cinta
      */
     private $accesosCinta;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Socio", inversedBy="cintas")
-     * @var Socio[]|Collection
-     */
-    private $socios;
-
     public function __construct()
     {
         $this->accesosCinta = new ArrayCollection();
-        $this->socios = new ArrayCollection();
     }
 
     /**
@@ -137,22 +130,5 @@ class Cinta
         return $this;
     }
 
-    /**
-     * @return Socio[]|Collection
-     */
-    public function getSocios()
-    {
-        return $this->socios;
-    }
-
-    /**
-     * @param Socio[]|Collection $socios
-     * @return Cinta
-     */
-    public function setSocios($socios)
-    {
-        $this->socios = $socios;
-        return $this;
-    }
 
 }

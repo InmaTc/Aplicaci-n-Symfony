@@ -43,6 +43,7 @@ final class SocioFactory extends ModelFactory
             'apellidos' => self::faker()->lastName() . ' ' . self::faker()->lastName(),
             'dni' => self::faker()->unique()->dni(),
         ];
+
     }
 
     protected function initialize(): self

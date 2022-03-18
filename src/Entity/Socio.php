@@ -40,12 +40,6 @@ class Socio
     private $dni;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Cinta", mappedBy="socios")
-     * @var Cinta[]|Collection
-     */
-    private $cintas;
-
-    /**
      * @ORM\OneToMany(targetEntity="Acceso", mappedBy="socioAccede")
      * @var Acceso[]|Collection
      */
@@ -53,7 +47,6 @@ class Socio
 
     public function __construct()
     {
-        $this->cintas = new ArrayCollection();
         $this->accesosSocio = new ArrayCollection();
     }
 
@@ -121,24 +114,6 @@ class Socio
     public function setDni(?string $dni): Socio
     {
         $this->dni = $dni;
-        return $this;
-    }
-
-    /**
-     * @return Cinta[]|Collection
-     */
-    public function getCintas()
-    {
-        return $this->cintas;
-    }
-
-    /**
-     * @param Cinta[]|Collection $cintas
-     * @return Socio
-     */
-    public function setCintas($cintas)
-    {
-        $this->cintas = $cintas;
         return $this;
     }
 
