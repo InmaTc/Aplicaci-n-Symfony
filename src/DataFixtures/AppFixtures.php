@@ -66,15 +66,32 @@ class AppFixtures extends Fixture
                                     'disponible' => true,
         ]);
 
-        SocioFactory::createMany(150, function (){
-            return [
-                'cintas' => CintaFactory::randomRange(1,3),
-            ];
-        });
+        $esSupervisor = EmpleadoFactory::new()->create([
+                                    'nombre' => 'Luis',
+                                    'apellidos' => 'Martínez Lara',
+                                    'dni' => '23589449E',
+                                    'email' => 'suepervisorLuis@gmail.com'
+                                ]);
+        $socio = SocioFactory::new()->create([
+            'nombre' => 'Ana',
+            'apellidos' => 'Aranda López',
+            'dni' => '45896552K',
+            'accesosSocio' => []
+        ]);
+
 
         EmpleadoFactory::createMany(30);
 
-        AccesoFactory::createMany(50);
+
+        AccesoFactory::createMany(1, [
+            'supervisadaPor' => $esSupervisor,
+            'cintaAccede' => $cinta1,
+            'socioAccede' => $socio
+        ]);
+
+        SocioFactory::createMany(100);
+
+        AccesoFactory::createMany(100);
 
         $manager->flush();
     }
