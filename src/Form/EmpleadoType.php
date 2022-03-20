@@ -6,9 +6,12 @@ use App\Entity\Acceso;
 use App\Entity\Empleado;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class EmpleadoType extends AbstractType
 {
@@ -35,12 +38,25 @@ class EmpleadoType extends AbstractType
                 'multiple' => true
             ])*/
         ;
+        if ($options['supervisor'] === false) {
+            $builder
+                ->add('claveAntigua', PasswordType::class, [
+                    'label' => 'Contraseña actual',
+                    'required' => false,
+                    'mapped' => false,
+                    'constraints' => [
+                        new UserPassword(),
+                        new NotBlank()
+                    ]
+                ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Empleado::class,
+            'supervisor' => false
         ]);
     }
 }
