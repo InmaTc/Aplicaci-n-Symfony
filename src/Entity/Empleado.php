@@ -243,22 +243,23 @@ class Empleado implements UserInterface
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        $roles = ["ROLE_USER"];
+        return $roles;
     }
 
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->getClave();
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->getUsuario();
     }
 
     public function eraseCredentials()
