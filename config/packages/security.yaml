@@ -6,7 +6,7 @@ security:
                 class: 'App\Entity\Empleado'
                 property: 'usuario'
     encoders:
-        App\Entity\Socio: bcrypt
+        App\Entity\Empleado: bcrypt
     role_hierarchy:
         ROLE_SUPERVISOR: [ROLE_EMPLEADO]
     firewalls:
