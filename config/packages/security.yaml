@@ -5,8 +5,10 @@ security:
             entity:
                 class: 'App\Entity\Empleado'
                 property: 'usuario'
-            encoders:
-                App\Entity\Socio: bcrypt
+    encoders:
+        App\Entity\Socio: bcrypt
+    role_hierarchy:
+        ROLE_DOCENTE: [ ROLE_EMPLEADO]
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -14,11 +16,11 @@ security:
         main:
             anonymous: lazy
             provider: proyecto
-                form_login:
-                    login_path: seguridad_login
-                    check_path: seguridad_login
-                logout:
-                    path: seguridad_logout
+            form_login:
+                login_path: seguridad_login
+                check_path: seguridad_login
+            logout:
+                path: seguridad_logout
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
