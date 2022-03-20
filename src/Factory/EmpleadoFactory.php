@@ -4,10 +4,10 @@ namespace App\Factory;
 
 use App\Entity\Empleado;
 use App\Repository\EmpleadoRepository;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @extends ModelFactory<Empleado>

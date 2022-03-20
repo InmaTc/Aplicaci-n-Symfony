@@ -42,7 +42,6 @@ class Empleado implements UserInterface
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="Debe introducir el DNI")
-     * @Assert\Expression(((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z])), message="Formato no válido")
      * @var ?string
      */
     private $dni;
@@ -209,7 +208,7 @@ class Empleado implements UserInterface
     /**
      * @return string
      */
-    public function getUsuario(): string
+    public function getUsuario(): ?string
     {
         return $this->usuario;
     }
@@ -227,7 +226,7 @@ class Empleado implements UserInterface
     /**
      * @return string
      */
-    public function getClave(): string
+    public function getClave(): ?string
     {
         return $this->clave;
     }
