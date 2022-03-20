@@ -9,11 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EmpleadoController extends AbstractController
 {
     /**
      * @Route("/empleado/listar", name="empleado_listar")
+     * @Security("is_granted('ROLE_EMPLEADO')")
      */
     public function listarEmpleado(EmpleadoRepository $empleadoRepository): Response
     {
@@ -26,6 +28,7 @@ class EmpleadoController extends AbstractController
 
     /**
      * @Route("/empleado/nuevo", name="empleado_nuevo")
+     * @Security("is_granted('ROLE_SUPERVISOR')")
      */
     public function nuevo(Request $request, EmpleadoRepository $empleadoRepository): Response
     {
@@ -36,6 +39,7 @@ class EmpleadoController extends AbstractController
 
     /**
      * @Route("/empleado/modificar/{id}", name="empleado_modificar")
+     * @Security("is_granted('ROLE_SUPERVISOR')")
      */
     public function modificar(Request $request, EmpleadoRepository $empleadoRepository, Empleado $empleado): Response
     {
@@ -59,6 +63,7 @@ class EmpleadoController extends AbstractController
 
     /**
      * @Route("/empleado/eliminar/{id}", name="empleado_eliminar")
+     * @Security("is_granted('ROLE_SUPERVISOR')")
      */
     public function eliminar(Request $request, EmpleadoRepository $empleadoRepository, Empleado $empleado): Response
     {
