@@ -70,7 +70,9 @@ class AppFixtures extends Fixture
                                     'nombre' => 'Luis',
                                     'apellidos' => 'Martínez Lara',
                                     'dni' => '23589449E',
-                                    'email' => 'suepervisorLuis@gmail.com'
+                                    'email' => 'suepervisorLuis@gmail.com',
+                                    'usuario' => 'luis24',
+                                    'clave' => 'oretania'
                                 ]);
         $socio = SocioFactory::new()->create([
             'nombre' => 'Ana',
