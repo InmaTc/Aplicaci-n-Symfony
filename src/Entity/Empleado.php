@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmpleadoRepository")
  * @Assert\EnableAutoMapping()
@@ -243,7 +244,14 @@ class Empleado implements UserInterface
 
     public function getRoles()
     {
-        $roles = ["ROLE_USER"];
+        $roles = [
+            'ROLE_EMPLEADO'
+        ];
+
+        if ($this->getEsSupervisor()) {
+            $roles[] = 'ROLE_SUPERVISOR';
+        }
+
         return $roles;
     }
 
