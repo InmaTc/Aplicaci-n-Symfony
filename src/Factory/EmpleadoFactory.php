@@ -7,6 +7,7 @@ use App\Repository\EmpleadoRepository;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @extends ModelFactory<Empleado>
@@ -28,10 +29,14 @@ use Zenstruck\Foundry\Proxy;
  */
 final class EmpleadoFactory extends ModelFactory
 {
-    public function __construct()
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+
+    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder)
     {
         parent::__construct();
-
+        $this->userPasswordEncoder = $userPasswordEncoder;
         // TODO inject services if required (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services)
     }
 
@@ -44,6 +49,8 @@ final class EmpleadoFactory extends ModelFactory
             'dni' => self::faker()->unique()->dni(),
             'email' => self::faker()->unique()->freeEmail(),
             'esSupervisor' => self::faker()->boolean() ? 1 : 0,
+            'usuario' => self::faker()->unique()->userName(),
+            'clave' => $this->userPasswordEncoder->encodePassword(new Empleado(), 'oretania')
         ];
     }
 
