@@ -8,7 +8,7 @@ security:
     encoders:
         App\Entity\Socio: bcrypt
     role_hierarchy:
-        ROLE_DOCENTE: [ ROLE_EMPLEADO]
+        ROLE_SUPERVISOR: [ROLE_EMPLEADO]
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
