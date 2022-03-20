@@ -62,6 +62,18 @@ class Empleado
     private $esSupervisor;
 
     /**
+     * @ORM\Column(type="string", unique=true)
+     * @var string
+     */
+    private $usuario;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $clave;
+
+    /**
      * @ORM\OneToMany(targetEntity="Acceso", mappedBy="supervisadaPor")
      * @var Acceso[]|Collection
      */
@@ -190,6 +202,42 @@ class Empleado
     public function setAccesosEmpleado($accesosEmpleado)
     {
         $this->accesosEmpleado = $accesosEmpleado;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsuario(): string
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param string $usuario
+     * @return Empleado
+     */
+    public function setUsuario(string $usuario): Empleado
+    {
+        $this->usuario = $usuario;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClave(): string
+    {
+        return $this->clave;
+    }
+
+    /**
+     * @param string $clave
+     * @return Empleado
+     */
+    public function setClave(string $clave): Empleado
+    {
+        $this->clave = $clave;
         return $this;
     }
 
