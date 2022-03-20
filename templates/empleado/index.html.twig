@@ -34,7 +34,7 @@
         {% endfor %}
         </tbody>
     </table>
-    {% if is_granted('ROLE_SUPERVISOR') %}
+    {% if is_granted('CREAR_EMPLEADO') %}
         <a href="{{ path('empleado_nuevo') }}" class="btn btn-success"><i class="fa fa-plus"></i> Crear nuevo empleado</a>
     {% endif %}
 {% endblock %}
