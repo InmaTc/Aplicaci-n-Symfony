@@ -75,6 +75,13 @@ class Empleado implements UserInterface
     private $clave;
 
     /**
+     * @ORM\Column(type="string")
+     *
+     * @var string
+     */
+    private $oldClave;
+
+    /**
      * @ORM\OneToMany(targetEntity="Acceso", mappedBy="supervisadaPor")
      * @var Acceso[]|Collection
      */
@@ -241,6 +248,25 @@ class Empleado implements UserInterface
         $this->clave = $clave;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getOldClave(): ?string
+    {
+        return $this->oldClave;
+    }
+
+    /**
+     * @param string $oldClave
+     * @return Empleado
+     */
+    public function setOldClave(string $oldClave): Empleado
+    {
+        $this->oldClave = $oldClave;
+        return $this;
+    }
+
 
     public function getRoles()
     {
